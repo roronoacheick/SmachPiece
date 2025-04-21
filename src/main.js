@@ -13,9 +13,28 @@ scene("game", () => {
     pos(0, height() - 48),
     outline(4),
     area(),
+    outline(4),
+    area(),
     body({ isStatic: true }),
     color(127, 200, 255),
   ]);
+
+  add([
+    rect(300, 35),
+    pos(50, 250),
+    area(),
+    body({ isStatic: true }),
+    color(800, 200, 255),
+  ]);
+
+  add([
+    rect(300, 35),
+    pos(900, 250),
+    area(),
+    body({ isStatic: true }),
+    color(800, 200, 255),
+  ]);
+
   // putting together our player character
   const bean = add([sprite("jojo"), pos(80, 40), area(), body()]);
 
@@ -49,33 +68,24 @@ scene("game", () => {
   }
 
   let score = 0;
-const scoreLabel = add([
-    text(score),
-    pos(24, 24)
-])
+  const scoreLabel = add([text(score), pos(24, 24)]);
 
-onUpdate(() => {
+  onUpdate(() => {
     score++;
     scoreLabel.text = score;
-});
+  });
 
   scene("lose", () => {
-    add([
-        text("Game Over"),
-        pos(center()),
-        anchor("center"),
-    ])
-})
+    add([text("Game Over"), pos(center()), anchor("center")]);
+  });
 
   bean.onCollide("tree", () => {
     addKaboom(bean.pos);
     shake();
-	go("lose");
+    go("lose");
   });
 
   spawnTree();
 });
 
-
 go("game");
-
