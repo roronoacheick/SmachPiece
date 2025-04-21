@@ -1,1 +1,1 @@
-# Smach-piece-
+# SmachPiece JS Project
