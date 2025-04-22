@@ -21,18 +21,18 @@ scene("game", () => {
 
   add([
     rect(300, 35),
-    pos(50, 350),
+    pos(50, 300), 
     area(),
     body({ isStatic: true }),
-    color(800, 200, 255),
+    color(255, 105, 180), 
   ]);
 
   add([
     rect(300, 35),
-    pos(900, 350),
+    pos(900, 300), 
     area(),
     body({ isStatic: true }),
-    color(800, 200, 255),
+    color(255, 105, 180), 
   ]);
 
   // putting together our player character
@@ -54,7 +54,7 @@ scene("game", () => {
   bean.move(160,0);
  });
 
-  setGravity(950);
+  setGravity(900);
   console.log(bean);
 
   
