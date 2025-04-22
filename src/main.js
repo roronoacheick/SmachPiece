@@ -21,7 +21,7 @@ scene("game", () => {
 
   add([
     rect(300, 35),
-    pos(50, 250),
+    pos(50, 350),
     area(),
     body({ isStatic: true }),
     color(800, 200, 255),
@@ -29,7 +29,7 @@ scene("game", () => {
 
   add([
     rect(300, 35),
-    pos(900, 250),
+    pos(900, 350),
     area(),
     body({ isStatic: true }),
     color(800, 200, 255),
@@ -44,39 +44,20 @@ scene("game", () => {
       bean.jump();
     }
   });
-//Movement 
-k.onKeyDown("left", () => {
+  //Movement 
+  k.onKeyDown("left", () => {
   bean.move(-160, 0);
-});
+ });
 
 
-k.onKeyDown("right",() => {
+ k.onKeyDown("right",() => {
   bean.move(160,0);
-});
+ });
 
-  setGravity(1600);
+  setGravity(950);
   console.log(bean);
 
-  loop(1, () => {});
-
-  function spawnTree() {
-    // add tree
-    add([
-      rect(48, rand(24, 64)),
-      area(),
-      outline(4),
-      pos(width(), height() - 48),
-      anchor("botleft"),
-      color(255, 180, 255),
-      move(LEFT, 240),
-      "tree", // add a tag here
-    ]);
-
-    wait(rand(0.5, 1.5), () => {
-      spawnTree();
-    });
-  }
-
+  
   let score = 0;
   const scoreLabel = add([text(score), pos(24, 24)]);
 
@@ -95,7 +76,7 @@ k.onKeyDown("right",() => {
     go("lose");
   });
 
-  spawnTree();
-});
+  
+ });
 
 go("game");
