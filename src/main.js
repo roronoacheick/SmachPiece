@@ -17,7 +17,7 @@ scene("game", () => {
     area(),
     body({ isStatic: true }),
     color(127, 200, 255),
-  ]);
+  ]); 
 
   add([
     rect(300, 35),
@@ -44,6 +44,16 @@ scene("game", () => {
       bean.jump();
     }
   });
+//Movement 
+k.onKeyDown("left", () => {
+  bean.move(-160, 0);
+});
+
+
+k.onKeyDown("right",() => {
+  bean.move(160,0);
+});
+
   setGravity(1600);
   console.log(bean);
 
