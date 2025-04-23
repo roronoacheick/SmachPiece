@@ -2,10 +2,17 @@ import kaboom from "kaboom";
 
 const k = kaboom();
 
+
+
 k.loadSprite("jojo", "sprites/bean.png");
 
 scene("game", () => {
   k.onClick(() => k.addKaboom(k.mousePos()));
+
+  
+  
+  
+  
 
   // add platform
   add([
@@ -41,7 +48,7 @@ scene("game", () => {
   // .jump() when "space" key is pressed
   onKeyPress("space", () => {
     if (bean.isGrounded()) {
-      bean.jump();
+      bean.jump(650);
     }
   });
   //Movement 
@@ -54,7 +61,7 @@ scene("game", () => {
   bean.move(160,0);
  });
 
-  setGravity(900);
+  setGravity(1200);
   console.log(bean);
 
   
