@@ -5,12 +5,27 @@ const k = kaboom();
 k.loadSprite("jojo", "sprites/Luffy.png");
 
 k.loadSpriteAtlas("sprites/Luffy_idle.png", {
-  "Luffy_idle": { 
+  Luffy_idle: {
     x: 0,
     y: 0,
-    width: 36,
-    height: 48,
-    sliceX: 7,
+    width: 127,
+    height: 69,
+    sliceX: 3,
+    anims: {
+      idle: { from: 0, to: 2, loop: true, speed: 10 },
+    },
+  },
+});
+k.loadSpriteAtlas("sprites/walk.png", {
+  Luffy_walk: {
+    x: 0,
+    y: 0,
+    width: 410,
+    height: 57,
+    sliceX: 8,
+    anims: {
+      walk: { from: 0, to: 7, loop: true, speed: 10 },
+    },
   },
 });
 
@@ -50,6 +65,7 @@ scene("game", () => {
   // putting together our player character
   // const bean = add([sprite("jojo"), pos(80, 40), area(), body()]);
   const Luffy = add([sprite("Luffy_idle"), pos(80, 40), area(), body()]);
+  Luffy.play("idle");
   // Luffy.play("run");
 
   // .jump() when "space" key is pressed
@@ -64,10 +80,16 @@ scene("game", () => {
   //Movement
   k.onKeyDown("left", () => {
     Luffy.move(-160, 0);
+    Luffy.use(sprite("Luffy_walk", { flipX: true }));
+    Luffy.play("walk");
   });
 
   k.onKeyDown("right", () => {
     Luffy.move(160, 0);
+    if (Luffy.sprite != "Luffy_walk") {
+      Luffy.use(sprite("Luffy_walk"));
+      Luffy.play("walk");
+    }
   });
 
   setGravity(1200);
